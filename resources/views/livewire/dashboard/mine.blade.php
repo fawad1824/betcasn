@@ -54,54 +54,71 @@
 
         <!-- Buttons -->
         <div class="grid grid-cols-3 gap-2 mx-4 mt-4">
-            <a href="/recharge" class="p-3 bg-gray-50 rounded-lg flex flex-col items-center">
+            <a href="/recharge"  wire:navigate class="p-3 bg-gray-50 rounded-lg flex flex-col items-center">
                 <img class="h-10 w-10" src="https://www.betcasn.com/images/mine/recharge.png" alt=""> <span
                     class="text-[20px] mt-1">Recharge</span>
             </a>
-            <a href="/withdrawl" class="p-3 bg-gray-50 rounded-lg flex flex-col items-center">
+            <a href="/withdrawl"  wire:navigate class="p-3 bg-gray-50 rounded-lg flex flex-col items-center">
                 <img class="h-10 w-10" src="https://www.betcasn.com/images/mine/withdraw.png" alt=""> <span
                     class="text-[20px] mt-1">Withdraw</span>
             </a>
-            <button class="p-3 bg-gray-50 rounded-lg flex flex-col items-center">
+            <a href="/exchange"  wire:navigate class="p-3 bg-gray-50 rounded-lg flex flex-col items-center">
                 <img class="h-10 w-10" src="https://www.betcasn.com/images/mine/transfer.png" alt=""> <span
                     class="text-[20px] mt-1">Flash Exchange</span>
-            </button>
+            </a>
         </div>
 
         <!-- Menu Items -->
         <div class="mt-10 mx-4">
             <ul class="space-y-5 text-gray-700 text-[20px]">
                 <li class="flex items-center space-x-5">
-                    <img class="h-8 w-8" src="https://www.betcasn.com/images/mine/prizeWheel.png" alt=""> <span>Prize
+                    <img class="h-8 w-8" src="https://www.betcasn.com/images/mine/prizeWheel.png" alt="">
+                    <span>Prize
                         Wheel</span>
                 </li>
+                <a class="flex" href="/trade"  wire:navigate>
+                    <li class="flex items-center space-x-5">
+                        <img class="h-8 w-8" src="https://www.betcasn.com/images/mine/trade.png" alt="">
+                        <span>Trade</span>
+                    </li>
+                </a>
                 <li class="flex items-center space-x-5">
-                    <img class="h-8 w-8" src="https://www.betcasn.com/images/mine/trade.png" alt=""> <span>Trade</span>
+                    <img class="h-8 w-8" src="https://www.betcasn.com/images/mine/recharge_record.png" alt="">
+                    <span>Record</span>
                 </li>
                 <li class="flex items-center space-x-5">
-                    <img class="h-8 w-8" src="https://www.betcasn.com/images/mine/recharge_record.png" alt=""> <span>Record</span>
+                    <img class="h-8 w-8" src="https://www.betcasn.com/images/mine/news.png" alt="">
+                    <span>News</span>
+                </li>
+                <a class="flex" href="/setting"  wire:navigate>
+                    <li class="flex items-center space-x-5">
+                        <img class="h-8 w-8" src="https://www.betcasn.com/images/mine/setup.png" alt="">
+                        <span>Settings</span>
+                    </li>
+                </a>
+
+                <li class="flex items-center space-x-5">
+                    <img class="h-8 w-8" src="https://www.betcasn.com/images/mine/language.png" alt="">
+                    <span>Language</span>
                 </li>
                 <li class="flex items-center space-x-5">
-                    <img class="h-8 w-8" src="https://www.betcasn.com/images/mine/news.png" alt=""> <span>News</span>
+                    <img class="h-8 w-8" src="https://www.betcasn.com/images/mine/rebate.png" alt=""> <span>Send
+                        Red Packet</span>
                 </li>
                 <li class="flex items-center space-x-5">
-                    <img class="h-8 w-8" src="https://www.betcasn.com/images/mine/setup.png" alt=""> <span>Settings</span>
+                    <img class="h-8 w-8" src="https://www.betcasn.com/images/mine/system.png" alt=""> <span>Red
+                        Packet Password</span>
                 </li>
                 <li class="flex items-center space-x-5">
-                    <img class="h-8 w-8" src="https://www.betcasn.com/images/mine/language.png" alt=""> <span>Language</span>
+                    <img class="h-8 w-8" src="https://www.betcasn.com/images/mine/exchange.png" alt="">
+                    <span>Exchange</span>
                 </li>
-                <li class="flex items-center space-x-5">
-                    <img class="h-8 w-8" src="https://www.betcasn.com/images/mine/rebate.png" alt=""> <span>Send Red Packet</span>
-                </li>
-                <li class="flex items-center space-x-5">
-                    <img class="h-8 w-8" src="https://www.betcasn.com/images/mine/system.png" alt=""> <span>Red Packet Password</span>
-                </li>
-                <li class="flex items-center space-x-5">
-                    <img class="h-8 w-8" src="https://www.betcasn.com/images/mine/exchange.png" alt=""> <span>Exchange</span>
-                </li>
-                <li class="flex items-center space-x-5">
-                    <img class="h-8 w-8" src="https://www.betcasn.com/images/mine/team.png" alt=""> <span>My Team</span>
-                </li>
+                <a class="flex" href="/team"  wire:navigate>
+                    <li class="flex items-center space-x-5">
+                        <img class="h-8 w-8" src="https://www.betcasn.com/images/mine/team.png" alt=""> <span>My
+                            Team</span>
+                    </li>
+                </a>
             </ul>
         </div>
 
