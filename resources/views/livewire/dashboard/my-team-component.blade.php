@@ -62,46 +62,50 @@
 
             <!-- share Form -->
             <div x-show="activeTab == 'share'" class="p-6  w-full">
-                <div class=" item-center text-center flex-col">
-                    <h1 class="text-4xl font-bold mb-5">
-                        Share with your friends to <br> get
-                        <span class="text-green-600">Commission</span>
+                <div class="flex flex-col items-center text-center px-4">
+                    <!-- Title Section -->
+                    <h1 class="text-3xl sm:text-4xl font-bold mb-3">
+                        Share with your friends to <br>
+                        get <span class="text-green-600">Commission</span>
                     </h1>
-                    <span class="text-1xl">Share with your friends to get.</span>
-                    <span class="text-1xl text-blue-500 cursor-pointer underline">View Rules</span>
+                    <span class="text-lg sm:text-xl">Share with your friends to get.</span>
+                    <span class="text-lg sm:text-xl text-blue-500 cursor-pointer underline">View Rules</span>
                 </div>
 
-                <div class=" item-center text-center flex-col mt-10">
-                    <h1 class="text-4xl font-bold mb-5">
+                <!-- Invite Link Section -->
+                <div class="flex flex-col items-center text-center mt-10">
+                    <h1 class="text-3xl sm:text-4xl font-bold mb-5">
                         Invite through link
                     </h1>
                 </div>
 
-                <div class="flex justify-center mt-10">
-                    <table class="text-center">
-                        <tr>
-                            <td class="relative">
-                                <label for="">Link</label>
-                                <br>
-
+                <!-- Input Fields -->
+                <div class="flex justify-center mt-6 w-full px-4">
+                    <div class="w-full max-w-md">
+                        <!-- Link Input -->
+                        <div class="relative w-full mb-4">
+                            <label class="block text-lg font-semibold mb-2">Link</label>
+                            <div class="relative">
                                 <input type="text" value="https://www.betcasn.com/register?inviteCode=10134566"
-                                    class="w-96 p-2 rounded-lg pr-10">
-                                <button class="absolute right-2 top-11 transform -translate-y-1/2 text-gray-500">
+                                    class="w-full p-3 border rounded-lg pr-10 text-sm sm:text-base">
+                                <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500">
                                     <i class="fas fa-copy"></i>
                                 </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="relative">
-                                <label for="" class="">Invitation Code</label>
-                                <br>
-                                <input type="text" value="10134566" class="w-96 p-2 rounded-lg pr-10">
-                                <button class="absolute right-2 top-11 transform -translate-y-1/2 text-gray-500">
+                            </div>
+                        </div>
+
+                        <!-- Invitation Code Input -->
+                        <div class="relative w-full">
+                            <label class="block text-lg font-semibold mb-2">Invitation Code</label>
+                            <div class="relative">
+                                <input type="text" value="10134566"
+                                    class="w-full p-3 border rounded-lg pr-10 text-sm sm:text-base">
+                                <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500">
                                     <i class="fas fa-copy"></i>
                                 </button>
-                            </td>
-                        </tr>
-                    </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
 

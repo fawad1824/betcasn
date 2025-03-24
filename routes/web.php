@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Livewire\Auth\DashboardComponent;
 use App\Livewire\Auth\LoginComponent;
 use App\Livewire\Auth\RegisterComponent;
@@ -14,7 +15,9 @@ use App\Livewire\Dashboard\Trade\TeamResult;
 use App\Livewire\Dashboard\Trade\TradeResult;
 use App\Livewire\Dashboard\Transactions;
 use App\Livewire\Dashboard\TransactionsList;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Validator;
 
 // Route::view('dashboard', 'dashboard')
 //     ->middleware(['auth', 'verified'])
@@ -39,6 +42,6 @@ Route::get('/exchange', Exchange::class)->name('exchange');
 Route::get('/setting', Setting::class)->name('setting');
 Route::get('/trade', TradeResult::class)->name('trade');
 Route::get('/team', TeamResult::class)->name('team');
+Route::view('reg', 'RegisterView');
 
-
-// require __DIR__ . '/auth.php';
+Route::post('/user-register', [AuthController::class, 'RegisterView']);

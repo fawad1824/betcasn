@@ -1,4 +1,5 @@
-<div>
+<div x-data="registerForm()">
+    <script src="{{ asset('assets/js/register.js') }}"></script>
     <div x-data="{ activeTab: 'email', next: 1, showModal: false, countryCode: '+1' }">
         <header class="flex justify-between items-center border-b-2 border-gray-300 p-2 pl-5 pr-5">
             <div class="text-xl font-bold">
@@ -66,19 +67,28 @@
                     </main>
                     <div>
                         <h1 class="text-sm mb-2"><span class="text-red-700">*</span> Email</h1>
-                        <input type="email" placeholder="Your Email" class="w-full p-2 border rounded mb-2">
-                        <h1 class="text-sm mb-2"><span class="text-red-700">*</span> Password</h1>
+                        <input type="email" x-model="email" @input="validateEmail" placeholder="Your Email"
+                            class="w-full p-2 border rounded mb-2">
+                        <p class="error text-red-500" x-text="emailError"></p>
+
+
+                        <h1 class="text-sm mb-2"><span class="text-red-700">*</span> OTP</h1>
                         <div class="flex items-center space-x-2 border rounded">
-                            <input type="text" placeholder="Your Password"
+                            <input type="text" x-model="otp" @input="validateOTP" placeholder="Please Your OTP"
                                 class="w-full p-2 border-none outline-none">
-                            <button class="p-2 rounded text-black w-1/3 text-right">
+                            <button @click="generateCode" type="button"
+                                class="p-2 rounded text-black w-1/3 text-right">
                                 Get Verification Code
                             </button>
                         </div>
+                        <p class="error text-red-500" x-text="otpError"></p>
+
                         <h1 class="text-sm mt-5 mb-10"><a href="/forget">Forgot Password?</a></h1>
-                        <button @click="next = '2'; showModal = false"
-                            class="w-full bg-black text-white p-2 rounded mt-3">Next
-                            Step</button>
+                        <button @click="submitForm(2)"
+                            class="w-full bg-black text-white p-2 rounded mt-3 disabled:opacity-50"
+                            :disabled="!isValid">
+                            Next Step
+                        </button>
                     </div>
                 </div>
 
@@ -99,22 +109,29 @@
                             <button @click="showModal = true" class=" p-2 rounded text-black">
                                 <span x-text="countryCode"></span>
                             </button>
-                            <input type="text" placeholder="Your Phone Number"
-                                class="w-full p-2 border-none outline-none">
+                            <input type="text" x-model="emailPhone" @input="validateemailPhone"
+                                placeholder="Your Phone Number" class="w-full p-2 border-none outline-none">
                         </div>
+                        <p class="error text-red-500" x-text="emailPhoneError"></p>
+
                         <h1 class="text-sm mt-2 mb-2"><span class="text-red-700">*</span> Password</h1>
 
                         <div class="flex items-center space-x-2 border rounded">
-                            <input type="text" placeholder="Your Password"
+                            <input type="text" x-model="otp" @input="validateOTP" placeholder="Please Your OTP"
                                 class="w-full p-2 border-none outline-none">
-                            <button class="p-2 rounded text-black w-1/3 text-right">
+                            <button @click="generateCode" type="button"
+                                class="p-2 rounded text-black w-1/3 text-right">
                                 Get Verification Code
                             </button>
                         </div>
+                        <p class="error text-red-500" x-text="otpError"></p>
+
                         <h1 class="text-sm mt-5 mb-10"><a href="/forget">Forgot Password?</a></h1>
-                        <button @click="next = '2'; showModal = false"
-                            class="w-full bg-black text-white p-2 rounded mt-3">Next
-                            Step</button>
+                        <button @click="submitForm(2)"
+                            class="w-full bg-black text-white p-2 rounded mt-3 disabled:opacity-50"
+                            :disabled="!isValid">
+                            Next Step
+                        </button>
                     </div>
                 </div>
             </div>
@@ -133,14 +150,22 @@
                     </main>
                     <div>
                         <h1 class="text-sm mb-2"><span class="text-red-700">*</span> Login Password</h1>
-                        <input type="email" placeholder="Please enter password"
-                            class="w-full p-2 border rounded mb-2">
+                        <input type="password" x-model="lpassword" @input="validateLpasswordL"
+                            placeholder="Please enter password" class="w-full p-2 border rounded mb-2">
+
+                        <p class="error text-red-500" x-text="lpasswordError"></p>
+
                         <h1 class="text-sm mb-2"><span class="text-red-700">*</span>Confirm Password</h1>
-                        <input type="email" placeholder="Please re-enter password"
-                            class="w-full p-2 border rounded mb-2">
-                        <button @click="next = '3'; showModal = false"
-                            class="w-full bg-black text-white p-2 rounded mt-3">Next
-                            Step</button>
+                        <input type="password" x-model="cpassword" @input="validateLpasswordC"
+                            placeholder="Please re-enter password" class="w-full p-2 border rounded mb-2">
+
+                        <p class="error text-red-500" x-text="cpasswordError"></p>
+
+                        <button @click="submitForm(3)"
+                            class="w-full bg-black text-white p-2 rounded mt-3 disabled:opacity-50"
+                            :disabled="!isValid1">
+                            Next Step
+                        </button>
                     </div>
                 </div>
             </div>
@@ -159,14 +184,21 @@
                     </main>
                     <div>
                         <h1 class="text-sm mb-2"><span class="text-red-700">*</span> Withdrawal Password</h1>
-                        <input type="email" placeholder="Please enter password"
-                            class="w-full p-2 border rounded mb-2">
+                        <input type="password" x-model="wlpassword" @input="validateWLpassword""
+                            placeholder="Please enter password" class="w-full p-2 border rounded mb-2">
+                        <p class="error text-red-500" x-text="lcpasswordError"></p>
+
                         <h1 class="text-sm mb-2"><span class="text-red-700">*</span>Confirm Password</h1>
-                        <input type="email" placeholder="Please re-enter password"
-                            class="w-full p-2 border rounded mb-2">
-                        <button @click="next = '4'; showModal = false"
-                            class="w-full bg-black text-white p-2 rounded mt-3">Next
-                            Step</button>
+                        <input type="password" x-model="wcpassword" @input="validateCLpassword""
+                            placeholder="Please re-enter password" class="w-full p-2 border rounded mb-2">
+
+                        <p class="error text-red-500" x-text="wcpasswordError"></p>
+
+                        <button @click="submitForm(4)"
+                            class="w-full bg-black text-white p-2 rounded mt-3 disabled:opacity-50"
+                            :disabled="!isValid2">
+                            Next Step
+                        </button>
                     </div>
                 </div>
             </div>
@@ -189,14 +221,22 @@
                             <button @click="showModal = true" class=" p-2 rounded text-black">
                                 <span x-text="countryCode"></span>
                             </button>
-                            <input type="text" placeholder="Please enter your WhatsApp"
-                                class="w-full p-2 border-none outline-none">
+                            <input x-model="phone" @input="validatephone"" type="phone"
+                                placeholder="Please enter your WhatsApp" class="w-full p-2 border-none outline-none">
+
                         </div>
+                        <p class="error text-red-500" x-text="phoneError"></p>
                         <h1 class="text-sm mb-2"><span class="text-red-700">*</span>Invitation Code</h1>
-                        <input type="email" placeholder="Please enter the invitation code"
+                        <input type="text" x-model="code" placeholder="Please enter the invitation code"
                             class="w-full p-2 border rounded mb-2">
-                        <button class="w-full bg-black text-white p-2 rounded mt-3">Next
-                            Step</button>
+
+                        {{-- <p class="error text-red-500" x-text="codeError"></p> --}}
+
+                        <button @click="submitForm(5)"
+                            class="w-full bg-black text-white p-2 rounded mt-3 disabled:opacity-50"
+                            :disabled="!isValid3">
+                            Register
+                        </button>
                     </div>
                 </div>
             </div>
@@ -234,3 +274,4 @@
             </a>
         </div>
     </div>
+</div>

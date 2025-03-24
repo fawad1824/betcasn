@@ -19,22 +19,13 @@ return new class extends Migration
             $table->string('password');
             $table->string('is_admin')->nullable();
             $table->string('role')->nullable();
-            $table->string('address')->nullable();
+            $table->string('cpassword')->nullable();
+            $table->string('lpassword')->nullable();
             $table->string('phone')->nullable();
-            $table->string('typeuser')->nullable();
-            $table->string('company_registration')->nullable();
-            $table->string('company_insurance')->nullable();
-            $table->string('fbrtax')->nullable();
-            $table->string('cnic')->nullable();
-            $table->string('drivingl')->nullable();
-            $table->string('company')->nullable();
-            $table->string('profile_image')->nullable();
-            $table->string('status')->nullable();
-            $table->string('subscriptions')->nullable();
-            $table->string('long')->nullable();
-            $table->string('lat')->nullable();
-
-
+            $table->string('whatsapp')->nullable();
+            $table->string('countrycode')->nullable();
+            $table->string('wcpassword')->nullable();
+            $table->string('wlpassword')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

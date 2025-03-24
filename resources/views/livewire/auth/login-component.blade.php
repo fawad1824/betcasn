@@ -108,7 +108,7 @@
 
     <div class="flex-row mt-20 text-center">
         <h1 class="text-sm">Don't have an account yet?</h1>
-        <h3 class="text-sm mb-4"><b><a href="/register">Register</a></b></h3>
+        <h3 class="text-sm mb-4"><b><a href="/register"  wire:navigate>Register</a></b></h3>
     </div>
 
 

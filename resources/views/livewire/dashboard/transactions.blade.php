@@ -52,54 +52,36 @@
         </div>
 
         <!-- Right: Order History -->
-        <div class="md:col-span-3 bg-white p-4 rounded-lg shadow-md">
+        <!-- Order History Table -->
+        <div class="md:col-span-3 bg-white p-4 rounded-lg shadow-md overflow-x-auto">
             <h2 class="text-lg font-semibold mb-2">Order History</h2>
-            <table class="w-full border-collapse border border-gray-300 text-sm">
+            <table class="w-full border-collapse border border-gray-300 text-xs sm:text-sm">
                 <thead>
                     <tr class="bg-gray-200">
-                        <th class="border border-gray-300 px-2 py-1">Order #</th>
-                        <th class="border border-gray-300 px-2 py-1">Amount</th>
-                        <th class="border border-gray-300 px-2 py-1">Result</th>
-                        <th class="border border-gray-300 px-2 py-1">Time</th>
+                        <th class="border border-gray-300 px-1 sm:px-2 py-1 whitespace-nowrap">Order #</th>
+                        <th class="border border-gray-300 px-1 sm:px-2 py-1 whitespace-nowrap">Amount</th>
+                        <th class="border border-gray-300 px-1 sm:px-2 py-1 whitespace-nowrap">Result</th>
+                        <th class="border border-gray-300 px-1 sm:px-2 py-1 whitespace-nowrap">Time</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Sample Data (Can be dynamically generated) -->
                     <tr class="text-center">
-                        <td class="border border-gray-300 px-2 py-2">1120250381244</td>
-                        <td class="border border-gray-300 px-2 py-2 text-green-600">86353.52</td>
-                        <td class="border border-gray-300 px-2 py-2">
-                            <span class="bg-red-500 text-white px-1 py-1 rounded">Small</span>
-                            <span class="bg-blue-500 text-white px-1 py-1 rounded">Double</span>
+                        <td class="border border-gray-300 px-1 sm:px-2 py-2">1120250381244</td>
+                        <td class="border border-gray-300 px-1 sm:px-2 py-2 text-green-600">86353.52</td>
+                        <td class="border border-gray-300 px-1 sm:px-2 py-2">
+                            <span class="bg-red-500 text-white px-1 py-1 rounded text-xs sm:text-sm">Small</span>
+                            <span class="bg-blue-500 text-white px-1 py-1 rounded text-xs sm:text-sm">Double</span>
                         </td>
-                        <td class="border border-gray-300 px-2 py-1">17:43:00</td>
+                        <td class="border border-gray-300 px-1 sm:px-2 py-1">17:43:00</td>
                     </tr>
                     <tr class="text-center">
-                        <td class="border border-gray-300 px-2 py-2">1120250381243</td>
-                        <td class="border border-gray-300 px-2 py-2 text-green-600">86357.02</td>
-                        <td class="border border-gray-300 px-2 py-2">
-                            <span class="bg-red-500 text-white px-1 py-1 rounded">Small</span>
-                            <span class="bg-blue-500 text-white px-1 py-1 rounded">Single</span>
+                        <td class="border border-gray-300 px-1 sm:px-2 py-2">1120250381243</td>
+                        <td class="border border-gray-300 px-1 sm:px-2 py-2 text-green-600">86357.02</td>
+                        <td class="border border-gray-300 px-1 sm:px-2 py-2">
+                            <span class="bg-red-500 text-white px-1 py-1 rounded text-xs sm:text-sm">Small</span>
+                            <span class="bg-blue-500 text-white px-1 py-1 rounded text-xs sm:text-sm">Single</span>
                         </td>
-                        <td class="border border-gray-300 px-1 py-1">17:42:00</td>
-                    </tr>
-                    <tr class="text-center">
-                        <td class="border border-gray-300 px-2 py-2">1120250381242</td>
-                        <td class="border border-gray-300 px-2 py-2 text-green-600">86374.74</td>
-                        <td class="border border-gray-300 px-2 py-2">
-                            <span class="bg-green-500 text-white px-2 py-1 rounded">Big</span>
-                            <span class="bg-blue-500 text-white px-2 py-1 rounded">Single</span>
-                        </td>
-                        <td class="border border-gray-300 px-2 py-1">17:41:00</td>
-                    </tr>
-                    <tr class="text-center">
-                        <td class="border border-gray-300 px-2 py-2">1120250381241</td>
-                        <td class="border border-gray-300 px-2 py-2 text-green-600">86292.92</td>
-                        <td class="border border-gray-300 px-2 py-2">
-                            <span class="bg-red-500 text-white px-2 py-1 rounded">Small</span>
-                            <span class="bg-blue-500 text-white px-2 py-1 rounded">Single</span>
-                        </td>
-                        <td class="border border-gray-300 px-2 py-1">17:40:00</td>
+                        <td class="border border-gray-300 px-1 sm:px-2 py-1">17:42:00</td>
                     </tr>
                 </tbody>
             </table>
@@ -119,85 +101,90 @@
 
     <!-- Modal Background Overlay -->
     <div x-show="showModal" x-cloak class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-end"
-        @click.away="showModal = false" :class="showModal == 'false'" x-transition.opacity>
+        @click.away="showModal = false" x-transition.opacity>
 
-        <!-- Full-Width Modal Content -->
+        <!-- Full-Width Scrollable Modal -->
         <div x-show="showModal" x-cloak x-transition:enter="transform transition ease-in-out duration-300"
             x-transition:enter-start="translate-y-full opacity-0" x-transition:enter-end="translate-y-0 opacity-100"
             x-transition:leave="transform transition ease-in-out duration-300"
             x-transition:leave-start="translate-y-0 opacity-100" x-transition:leave-end="translate-y-full opacity-0"
-            class="w-full bg-white p-6 rounded-t-lg shadow-lg min-h-[70vh]">
+            class="w-full bg-white p-6 rounded-t-lg shadow-lg max-h-[80vh] overflow-y-auto min-h-[70vh] relative">
 
+            <!-- Close Button (X) -->
+            <button @click="showModal = false"
+                class="absolute top-4 right-4 text-2xl font-bold text-gray-700 hover:text-black transition-all">
+                &times;
+            </button>
 
+            <!-- Modal Header -->
             <div class="flex justify-between items-center">
                 <span class="text-lg font-semibold">BTC/USDT</span>
-                <button @click="showModal = false" class="text-2xl font-bold">&times;</button>
             </div>
-
 
             <!-- Options -->
             <div class="grid grid-cols-3 gap-4 my-4" x-data="{ selected: null }">
                 <template
                     x-for="(option, index) in [
-                    { name: 'Big', value: 1.95 }, { name: 'Small', value: 1.95 },
-                    { name: 'Single', value: 1.95 }, { name: 'Double', value: 1.95 },
-                    { name: 'Big Single', value: 3.8 }, { name: 'Small Single', value: 3.8 },
-                    { name: 'Big Double', value: 3.8 }, { name: 'Small Double', value: 3.8 }
-                ]"
+                { name: 'Big', value: 1.95 }, { name: 'Small', value: 1.95 },
+                { name: 'Single', value: 1.95 }, { name: 'Double', value: 1.95 },
+                { name: 'Big Single', value: 3.8 }, { name: 'Small Single', value: 3.8 },
+                { name: 'Big Double', value: 3.8 }, { name: 'Small Double', value: 3.8 }
+            ]"
                     :key="index">
                     <button @click="selected = index"
                         :class="selected === index ? 'bg-gray-100 text-black border-green-400' :
                             'bg-white text-black border-gray-300'"
-                        class="p-2 border rounded-lg text-center transition-all duration-300 w-full">
-                        <span x-text="option.name"></span> <br>
-                        <span class="text-sm" x-text="option.value"></span>
+                        class="p-3 border rounded-lg text-center transition-all duration-300 w-full flex flex-col items-center justify-center">
+                        <span class="text-base font-semibold" x-text="option.name"></span>
+                        <span class="text-sm text-gray-500" x-text="option.value"></span>
                     </button>
                 </template>
             </div>
 
             <!-- Currency Selection -->
             <div class="my-4">
-
-                <div class="flex gap-4">
-                    <p class="font-semibold mb-2  text-3xl">Currency Type</p>
+                <p class="font-semibold text-2xl mb-2">Currency Type</p>
+                <div class="flex gap-4 items-center">
                     <label class="flex items-center space-x-2">
                         <input @click="type = 'USDT'" type="radio" name="currency" class="form-radio text-black"
                             checked>
-                        <span>USDT</span>
+                        <span class="text-lg">USDT</span>
                     </label>
                     <label class="flex items-center space-x-2">
-                        <input @click="type = 'TRK'" type="radio" name="currency" class="form-radio text-black">
-                        <span>TRX</span>
+                        <input @click="type = 'TRX'" type="radio" name="currency" class="form-radio text-black">
+                        <span class="text-lg">TRX</span>
                     </label>
                 </div>
             </div>
 
             <!-- Order Amount -->
             <div class="my-4">
-
+                <p class="font-semibold text-2xl mb-2">Amount</p>
                 <div class="flex items-center gap-2">
-                    <p class="font-semibold mb-2 text-3xl">Amount</p>
-                    <p class="font-semibold mb-2 text-2xl text-white">Amount</p>
-                    <input type="number" class="w-full p-2 border rounded-lg" placeholder="Order Amount">
-                    <button class="px-4 py-2 bg-black text-white rounded-lg">All</button>
+                    <input type="number" class="w-full p-3 border rounded-lg text-lg" placeholder="Enter Amount">
+                    <button class="px-4 py-2 bg-black text-white rounded-lg text-lg">All</button>
                 </div>
             </div>
 
             <!-- Total Bet & Amount -->
             <div class="my-4">
-                <p class="font-semibold mb-2 text-3xl">Total Bet: <span class="font-semibold text-sm">0 <span
-                            x-text="type"></span></span></p>
-                <p class="font-semibold mb-2 text-3xl">Total Amount: <span class="font-semibold text-sm">0.0991 <span
-                            x-text="type"></span></span></p>
+                <p class="font-semibold text-2xl">Total Bet:
+                    <span class="font-semibold text-sm">0 <span x-text="type"></span></span>
+                </p>
+                <p class="font-semibold text-2xl">Total Amount:
+                    <span class="font-semibold text-sm">0.0991 <span x-text="type"></span></span>
+                </p>
             </div>
 
             <!-- Buttons -->
             <div class="flex gap-4 my-4">
-                <button @click="showModal = true" :class="showModal === 'team'"
-                    class="w-full py-3 border rounded-lg">Clear</button>
-                <button class="w-full py-3 bg-black text-white rounded-lg">Confirm</button>
+                <button @click="selected = null" class="w-full py-3 border rounded-lg text-lg">Clear</button>
+                <button class="w-full py-3 bg-black text-white rounded-lg text-lg">Confirm</button>
             </div>
+
         </div>
     </div>
+
+
 
 </div>

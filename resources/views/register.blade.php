@@ -131,7 +131,7 @@
 
     <div class="flex-row mt-20 text-center">
         <h1 class="text-sm">Don't have an account yet?</h1>
-        <h3 class="text-sm mb-4"><b><a href="/">Login</a></b></h3>
+        <h3 class="text-sm mb-4"><b><a href="/"  wire:navigate >Login</a></b></h3>
     </div>
 
     <div class="fixed text-right bottom-20 right-5 flex flex-col items-center space-y-3">

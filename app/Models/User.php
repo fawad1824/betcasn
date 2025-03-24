@@ -21,24 +21,16 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'lpassword',
+        'cpassword',
+        'wlpassword',
+        'wcpassword',
+        'phone',
+        'whatsapp',
+        'code',
         'is_admin',
         'role',
-        'address',
-        'phone',
-        'typeuser',
-        'profile_image',
 
-        // Additional fields for customer and admin users
-        'company_registration',
-        'company_insurance',
-        'fbrtax',
-        'cnic',
-        'drivingl',
-        'company',
-        'status',
-        'subscriptions',
-        'lat',
-        'long'
     ];
 
     /**
