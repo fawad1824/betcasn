@@ -1,4 +1,13 @@
 <div x-data="registerForm()">
+    @if (Auth::check())
+        <script>
+            window.location.href = "{{ route('home') }}"; // Redirect to the dashboard
+        </script>
+    @else
+        <script>
+            window.location.href = "{{ route('register') }}"; // Redirect to the dashboard
+        </script>
+    @endif
     <script src="{{ asset('assets/js/register.js') }}"></script>
     <div x-data="{ activeTab: 'email', next: 1, showModal: false, countryCode: '+1' }">
         <header class="flex justify-between items-center border-b-2 border-gray-300 p-2 pl-5 pr-5">

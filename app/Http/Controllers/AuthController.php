@@ -33,4 +33,26 @@ class AuthController extends Controller
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
+
+    public function LoginView(Request $request)
+    {
+        if ($request->emailPhone) {
+
+            $user = User::where('phone', $request->emailPhone)->first();
+
+            $credentials = [
+                'email' => $user->email,
+                'password' => $request->password,
+            ];
+        } else {
+            $credentials = $request->only('email', 'password');
+        }
+
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            return response()->json(['message' => 'User logged in successfully', 'user' => $user], 200);
+        } else {
+            return response()->json(['error' => 'Invalid email or password'], 401);
+        }
+    }
 }

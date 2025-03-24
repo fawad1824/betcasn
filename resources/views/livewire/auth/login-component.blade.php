@@ -1,6 +1,16 @@
-<div>
+<div x-data="loginForm()" x-data="{ activeTab: 'email', showModal: false, countryCode: '+1' }">
+    @if (Auth::check())
+        <script>
+            window.location.href = "{{ route('home') }}"; // Redirect to the dashboard
+        </script>
+    @else
+        <script>
+            window.location.href = "{{ route('login') }}"; // Redirect to the dashboard
+        </script>
+    @endif
+    <script src="{{ asset('assets/js/login.js') }}"></script>
 
-    <div x-data="{ activeTab: 'email', showModal: false, countryCode: '+1' }"> <!-- Wrap everything in one Alpine.js scope -->
+    <div> <!-- Wrap everything in one Alpine.js scope -->
         <header class="flex justify-between items-center border-b-2 border-gray-300 p-2 pl-5 pr-5">
             <div class="text-xl font-bold">
                 <img style="width: 25px;" src="https://www.betcasn.com/images/icon_close.png" alt="">
@@ -56,11 +66,20 @@
                 </main>
                 <div>
                     <h1 class="text-sm mb-2"><span class="text-red-700">*</span> Email</h1>
-                    <input type="email" placeholder="Your Email" class="w-full p-2 border rounded mb-2">
+                    <input type="email" x-model="email" @input="validateEmail" placeholder="Your Email"
+                        class="w-full p-2 border rounded mb-2">
+
+                    <p class="error text-red-500" x-text="emailError"></p>
+
                     <h1 class="text-sm mb-2"><span class="text-red-700">*</span> Password</h1>
-                    <input type="password" placeholder="Password" class="w-full p-2 border rounded mb-2">
+                    <input type="password" x-model="password" @input="validatePassword" placeholder="Password"
+                        class="w-full p-2 border rounded mb-2">
+
+                    <p class="error text-red-500" x-text="passwordError"></p>
+
                     <h1 class="text-sm mt-5 mb-10"><a href="/forget">Forgot Password?</a></h1>
-                    <button class="w-full bg-black text-white p-2 rounded mt-3">Login</button>
+                    <button @click="submitForm()" :disabled="!isValid"
+                        class="w-full bg-black text-white p-2 rounded mt-3">Login</button>
                 </div>
             </div>
 
@@ -81,13 +100,19 @@
                         <button @click="showModal = true" class="bg-gray-200 p-2 rounded text-black">
                             <span x-text="countryCode"></span>
                         </button>
-                        <input type="text" placeholder="Your Phone Number"
-                            class="w-full p-2 border-none outline-none">
+                        <input type="text" placeholder="Your Phone Number" x-model="emailPhone"
+                            @input="validateEmail" class="w-full p-2 border-none outline-none">
                     </div>
+                    <p class="error text-red-500" x-text="emailPhoneError"></p>
+
                     <h1 class="text-sm mt-2 mb-2"><span class="text-red-700">*</span> Password</h1>
-                    <input type="password" placeholder="Password" class="w-full p-2 border rounded mb-2">
+                    <input type="password" placeholder="Password" x-model="password" @input="validatePassword"
+                        class="w-full p-2 border rounded mb-2">
+                    <p class="error text-red-500" x-text="passwordError"></p>
+
                     <h1 class="text-sm mt-5 mb-10"><a href="/forget">Forgot Password?</a></h1>
-                    <button class="w-full bg-black text-white p-2 rounded mt-3">Login</button>
+                    <button @click="submitForm()" :disabled="!isValid"
+                        class="w-full bg-black text-white p-2 rounded mt-3">Login</button>
                 </div>
             </div>
         </div>
@@ -100,7 +125,8 @@
                     class="block w-full text-left p-2 hover:bg-gray-200">🇺🇸 United States (+1)</button>
                 <button @click="countryCode = '+92'; showModal = false"
                     class="block w-full text-left p-2 hover:bg-gray-200">🇵🇰 Pakistan (+92)</button>
-                <button @click="showModal = false" class="w-full mt-2 bg-red-500 text-white p-2 rounded">Close</button>
+                <button @click="showModal = false"
+                    class="w-full mt-2 bg-red-500 text-white p-2 rounded">Close</button>
             </div>
         </div>
 
@@ -108,7 +134,7 @@
 
     <div class="flex-row mt-20 text-center">
         <h1 class="text-sm">Don't have an account yet?</h1>
-        <h3 class="text-sm mb-4"><b><a href="/register"  wire:navigate>Register</a></b></h3>
+        <h3 class="text-sm mb-4"><b><a href="/register" wire:navigate>Register</a></b></h3>
     </div>
 
 

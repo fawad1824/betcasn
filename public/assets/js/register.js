@@ -1,8 +1,10 @@
 function registerForm() {
     return {
 
-        email: 'fawadmin@gmail.com',
+        email: '',
         otp: '',
+        emailPhone: '',
+        emailPhoneError: '',
         emailError: '',
         otpError: '',
         isValid: false,
@@ -26,8 +28,12 @@ function registerForm() {
         phoneError: '',
         code: '',
 
+
         checkValidation() {
             this.isValid = this.emailError === '' && this.otpError === '';
+        },
+        checkValidation1() {
+            this.isValid = this.emailPhoneError === '' && this.otpError === '';
         },
 
         checkValidation2() {
@@ -70,6 +76,18 @@ function registerForm() {
             this.checkValidation();
         },
 
+        validateemailPhone() {
+            this.emailPhoneError = '';
+            const phonePattern = /^[0-9]{10,15}$/; // Adjust pattern as needed
+
+            if (!this.emailPhone) {
+                this.emailPhoneError = "Phone number is required.";
+            } else if (!phonePattern.test(this.emailPhone)) {
+                this.emailPhoneError = "Invalid phone number format.";
+            }
+
+            this.checkValidation1();
+        },
 
 
         generateCode() {
@@ -165,7 +183,7 @@ function registerForm() {
                     }
 
                     const data = await response.json();
-                    console.log("Response Data:", data);
+
                     if (data.message == 'User registered successfully') {
                         window.location.href = '/home'; // Redirect to the home page
                     }

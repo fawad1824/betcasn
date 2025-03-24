@@ -28,20 +28,25 @@ use Illuminate\Support\Facades\Validator;
 //     ->name('profile');
 
 
+Route::middleware('auth')->group(function () {
+    Route::get('/home', DashboardComponent::class)->name('home');
+    Route::get('/myteam', MyTeamComponent::class)->name('myteam');
+    Route::get('/transactions', Transactions::class)->name('transactions');
+    Route::get('/transactions-list', TransactionsList::class)->name('transactions.list');
+    Route::get('/mine', Mine::class)->name('mine');
+    Route::get('/recharge', RechargeAccount::class)->name('recharge');
+    Route::get('/record-recharge', RecordAccount::class)->name('record.recharge');
+    Route::get('/withdrawl', WithdrawAccount::class)->name('withdrawl');
+    Route::get('/exchange', Exchange::class)->name('exchange');
+    Route::get('/setting', Setting::class)->name('setting');
+    Route::get('/trade', TradeResult::class)->name('trade');
+    Route::get('/team', TeamResult::class)->name('team');
+    Route::view('reg', 'RegisterView');
+});
+
 Route::get('/', LoginComponent::class)->name('login');
-Route::get('/register', RegisterComponent::class)->name('login');
-Route::get('/home', DashboardComponent::class)->name('home');
-Route::get('/myteam', MyTeamComponent::class)->name('myteam');
-Route::get('/transactions', Transactions::class)->name('transactions');
-Route::get('/transactions-list', TransactionsList::class)->name('transactions.list');
-Route::get('/mine', Mine::class)->name('mine');
-Route::get('/recharge', RechargeAccount::class)->name('recharge');
-Route::get('/record-recharge', RecordAccount::class)->name('record.recharge');
-Route::get('/withdrawl', WithdrawAccount::class)->name('withdrawl');
-Route::get('/exchange', Exchange::class)->name('exchange');
-Route::get('/setting', Setting::class)->name('setting');
-Route::get('/trade', TradeResult::class)->name('trade');
-Route::get('/team', TeamResult::class)->name('team');
-Route::view('reg', 'RegisterView');
+Route::get('/register', RegisterComponent::class)->name('register');
+
 
 Route::post('/user-register', [AuthController::class, 'RegisterView']);
+Route::post('/user-login', [AuthController::class, 'LoginView']);
