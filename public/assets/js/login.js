@@ -1,3 +1,16 @@
+function showToast(message, bgColor = "bg-gray-800") {
+    const toast = document.createElement("div");
+    toast.className = `fixed top-5 right-5 ${bgColor} text-white px-4 py-2 rounded-lg shadow-lg transition-opacity opacity-100`;
+    toast.innerText = message;
+
+    document.body.appendChild(toast);
+
+    setTimeout(() => {
+        toast.classList.add("opacity-0");
+        setTimeout(() => toast.remove(), 500);
+    }, 2500);
+}
+
 function loginForm() {
     return {
 
@@ -62,15 +75,21 @@ function loginForm() {
                 });
 
                 if (!response.ok) {
-                    // Handle Laravel API error response
-                    const errorText = await response.text();
-                    console.error("Server Error:", errorText);
+                    try {
+                        const errorData = await response.json(); // Parse JSON response
+                        const errorMessage = errorData.error || "An unknown error occurred";
+                        showToast(errorMessage, "bg-red-500"); // Show toast with error message
+                    } catch (parseError) {
+                        showToast("Error: Unable to process response", "bg-red-500");
+                    }
                     return;
                 }
+
 
                 const data = await response.json();
 
                 if (data.message == 'User logged in successfully') {
+                    showToast(data.message, "bg-green-500"); // Show toast with error message
                     window.location.href = '/home'; // Redirect to the home page
                 }
                 // Handle errors if present in response

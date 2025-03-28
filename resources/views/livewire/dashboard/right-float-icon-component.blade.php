@@ -7,7 +7,7 @@
         </a>
 
         <!-- WhatsApp Button -->
-        <a href="https://wa.me/1234567890" target="_blank" class=" text-white p-1  ">
+        <a href="https://wa.me/+447543918264" target="_blank" class=" text-white p-1  ">
             <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"
                 class="w-12 h-12">
         </a>

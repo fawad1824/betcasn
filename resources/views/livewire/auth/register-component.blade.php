@@ -1,11 +1,8 @@
 <div x-data="registerForm()">
+
     @if (Auth::check())
         <script>
             window.location.href = "{{ route('home') }}"; // Redirect to the dashboard
-        </script>
-    @else
-        <script>
-            window.location.href = "{{ route('register') }}"; // Redirect to the dashboard
         </script>
     @endif
     <script src="{{ asset('assets/js/register.js') }}"></script>
@@ -76,7 +73,7 @@
                     </main>
                     <div>
                         <h1 class="text-sm mb-2"><span class="text-red-700">*</span> Email</h1>
-                        <input type="email" x-model="email" @input="validateEmail" placeholder="Your Email"
+                        <input type="email" id="email" x-model="email" @input="validateEmail" placeholder="Your Email"
                             class="w-full p-2 border rounded mb-2">
                         <p class="error text-red-500" x-text="emailError"></p>
 
@@ -85,7 +82,7 @@
                         <div class="flex items-center space-x-2 border rounded">
                             <input type="text" x-model="otp" @input="validateOTP" placeholder="Please Your OTP"
                                 class="w-full p-2 border-none outline-none">
-                            <button @click="generateCode" type="button"
+                            <button onclick="generateCode()" type="button"
                                 class="p-2 rounded text-black w-1/3 text-right">
                                 Get Verification Code
                             </button>
@@ -271,7 +268,7 @@
 
         <div class="fixed text-right bottom-20 right-5 flex flex-col items-center space-y-3">
             <!-- WhatsApp Button -->
-            <a href="https://wa.me/1234567890" target="_blank" class=" text-white p-1  ">
+            <a href="https://wa.me/+447543918264" target="_blank" class=" text-white p-1  ">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"
                     class="w-12 h-12">
             </a>

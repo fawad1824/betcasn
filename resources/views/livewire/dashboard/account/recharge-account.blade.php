@@ -23,17 +23,44 @@
 
     <div class="mt-20 w-full text-[20px] mx-auto bg-white shadow-lg rounded-lg p-6">
         <div class="flex flex-col items-center">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=TEYQeSyop3fdMCsZh5LSNExtJcvf1WS36T"
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=TFuRuvzXUwuGPHzX2avU7dEQ5i52jh2edQ"
                 alt="QR Code" class="w-40 h-40 sm:w-56 sm:h-56 border p-4 rounded-lg">
         </div>
 
         <p class="text-black text-lg font-bold mt-4">Recharge Address</p>
-        <div class="flex items-center mt-2 text-lg rounded-lg bg-gray-100 p-3 w-full">
-            <span class="text-black truncate">TEYQeSyop3fdMCsZh5LSNExtJcvf1WS36T</span>
-            <button class="ml-2 text-blue-500">
+        <div class="relative flex items-center mt-2 text-lg rounded-lg bg-gray-100 p-3 w-full">
+            <span id="copyText" class="text-black truncate">TFuRuvzXUwuGPHzX2avU7dEQ5i52jh2edQ</span>
+            <button onclick="copyToClipboard()" class="ml-auto text-blue-500">
                 <img class="h-8 w-8" src="https://www.betcasn.com/images/copy.png" alt="Copy">
             </button>
         </div>
+
+        <!-- Toast Notification -->
+        <div id="toast"
+            class="fixed bottom-5 right-5 bg-green-500 text-white p-3 rounded-lg shadow-lg opacity-0 transition-opacity duration-300">
+            Copied to clipboard!
+        </div>
+
+        <script>
+            function copyToClipboard() {
+                const text = document.getElementById("copyText").innerText;
+                navigator.clipboard.writeText(text).then(() => {
+                    showToast();
+                }).catch(err => {
+                    console.error("Failed to copy: ", err);
+                });
+            }
+
+            function showToast() {
+                const toast = document.getElementById("toast");
+                toast.classList.remove("opacity-0");
+                setTimeout(() => {
+                    toast.classList.add("opacity-0");
+                }, 2000);
+            }
+        </script>
+
+
 
         <div class="flex items-center mt-5 p-3 text-sm text-black rounded-lg bg-gray-100 border" role="alert">
             <svg class="shrink-0 w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">

@@ -1,3 +1,17 @@
+function showToast(message, bgColor = "bg-gray-800") {
+    const toast = document.createElement("div");
+    toast.className = `fixed top-5 right-5 ${bgColor} text-white px-4 py-2 rounded-lg shadow-lg transition-opacity opacity-100`;
+    toast.innerText = message;
+
+    document.body.appendChild(toast);
+
+    setTimeout(() => {
+        toast.classList.add("opacity-0");
+        setTimeout(() => toast.remove(), 500);
+    }, 2500);
+}
+
+
 function registerForm() {
     return {
 
@@ -27,6 +41,7 @@ function registerForm() {
         phone: '',
         phoneError: '',
         code: '',
+
 
 
         checkValidation() {
@@ -89,14 +104,6 @@ function registerForm() {
             this.checkValidation1();
         },
 
-
-        generateCode() {
-            this.verificationCode = Math.floor(100000 + Math.random() * 900000); // Generates a 6-digit code
-            this.showCode = true;
-            if (!this.otp) {
-                this.otp = this.verificationCode;
-            }
-        },
 
         validateOTP() {
             this.otpError = '';
@@ -171,8 +178,10 @@ function registerForm() {
                             wlpassword: this.wlpassword,
                             wcpassword: this.wcpassword,
                             phone: this.phone,
-                            code: this.code
+                            code: this.countryCode,
+                            uuid: Math.floor(10000 + Math.random() * 90000) // Generates a random 6-digit number
                         })
+
                     });
 
                     if (!response.ok) {
@@ -185,6 +194,7 @@ function registerForm() {
                     const data = await response.json();
 
                     if (data.message == 'User registered successfully') {
+                        showToast(data.message, "bg-green-500"); // Show toast with error message
                         window.location.href = '/home'; // Redirect to the home page
                     }
                     // Handle errors if present in response
@@ -195,6 +205,8 @@ function registerForm() {
 
                 } catch (error) {
                     console.error("Error:", error);
+                    showToast(error, "bg-red-500"); // Show toast with error message
+
                 }
             }
         }
@@ -203,3 +215,30 @@ function registerForm() {
 }
 
 
+
+
+function generateCode() {
+    let verificationCode = Math.floor(100000 + Math.random() * 900000); // Generate a 6-digit OTP
+    let email = $('#email').val(); // Get email from input field
+
+    console.log(email, verificationCode);
+
+    $.ajax({
+        url: '/otpsend',
+        type: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // Include CSRF token
+        },
+        data: {
+            email: email,
+            otp: verificationCode
+        },
+
+        success: function(response) {
+            alert('OTP sent successfully!');
+        },
+        error: function(xhr) {
+            alert('Failed to send OTP: ' + xhr.responseJSON.error);
+        }
+    });
+}

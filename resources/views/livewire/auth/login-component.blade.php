@@ -1,16 +1,12 @@
-<div x-data="loginForm()" x-data="{ activeTab: 'email', showModal: false, countryCode: '+1' }">
+<div x-data="loginForm()" >
     @if (Auth::check())
         <script>
             window.location.href = "{{ route('home') }}"; // Redirect to the dashboard
         </script>
-    @else
-        <script>
-            window.location.href = "{{ route('login') }}"; // Redirect to the dashboard
-        </script>
     @endif
     <script src="{{ asset('assets/js/login.js') }}"></script>
 
-    <div> <!-- Wrap everything in one Alpine.js scope -->
+    <div x-data="{ activeTab: 'email', showModal: false, countryCode: '+1' }"> <!-- Wrap everything in one Alpine.js scope -->
         <header class="flex justify-between items-center border-b-2 border-gray-300 p-2 pl-5 pr-5">
             <div class="text-xl font-bold">
                 <img style="width: 25px;" src="https://www.betcasn.com/images/icon_close.png" alt="">
@@ -142,7 +138,7 @@
 
 
         <!-- WhatsApp Button -->
-        <a href="https://wa.me/1234567890" target="_blank" class=" text-white p-1  ">
+        <a href="https://wa.me/+447543918264" target="_blank" class=" text-white p-1  ">
             <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"
                 class="w-12 h-12">
         </a>

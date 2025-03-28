@@ -86,7 +86,7 @@
                         <div class="relative w-full mb-4">
                             <label class="block text-lg font-semibold mb-2">Link</label>
                             <div class="relative">
-                                <input type="text" value="https://www.betcasn.com/register?inviteCode=10134566"
+                                <input type="text" value="https://www.betcrown.site/register?inviteCode=10134566"
                                     class="w-full p-3 border rounded-lg pr-10 text-sm sm:text-base">
                                 <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500">
                                     <i class="fas fa-copy"></i>

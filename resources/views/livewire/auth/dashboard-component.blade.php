@@ -70,7 +70,7 @@
                 </div>
 
                 <div class="col-span-1 md:col-span-2">
-                    <img src="btc-chart.png" alt="BTC Chart" class="h-8 w-auto">
+                    <img src="{{ asset('assets/images/image.png') }}" alt="BTC Chart" class="h-8 w-auto">
                 </div>
 
                 <div class="col-span-1 text-right">
@@ -90,7 +90,7 @@
                 </div>
 
                 <div class="col-span-1 md:col-span-2">
-                    <img src="eth-chart.png" alt="ETH Chart" class="h-8 w-auto">
+                    <img src="{{ asset('assets/images/image.png') }}" alt="BTC Chart" class="h-8 w-auto">
                 </div>
 
                 <div class="col-span-1 text-right">

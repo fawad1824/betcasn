@@ -5,8 +5,8 @@
         <div class="mt-20 p-4 flex items-center space-x-4">
             <img src="https://www.betcasn.com/images/avatar/1.png" class="w-12 h-12 rounded-full" alt="Profile">
             <div>
-                <p class="font-bold text-lg">UID: 10134566</p>
-                <p class="text-gray-500 text-sm">faw******@yopmail.com 🍻</p>
+                <p class="font-bold text-lg">UID: {{ Auth::user()->uuid }}</p>
+                <p class="text-gray-500 text-sm">{{ Auth::user()->email }} 🍻</p>
             </div>
         </div>
 

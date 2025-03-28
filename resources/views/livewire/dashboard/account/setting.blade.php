@@ -41,25 +41,25 @@
             <!-- Name -->
             <div class="flex items-center justify-between px-4 py-4">
                 <span class="text-gray-700">Name</span>
-                <span class="text-gray-500">fawad.fa3</span>
+                <span class="text-gray-500">{{ Auth::user()->name }}</span>
             </div>
 
             <!-- Gender -->
             <div class="flex items-center justify-between px-4 py-4">
                 <span class="text-gray-700">Gender</span>
-                <span class="text-gray-500">Unknown</span>
+                <span class="text-gray-500">{{ Auth::user()->gender ?? 'Unknown' }}</span>
             </div>
 
             <!-- Email -->
             <div class="flex items-center justify-between px-4 py-4">
                 <span class="text-gray-700">Email</span>
-                <span class="text-gray-500">faw******@yopmail.com</span>
+                <span class="text-gray-500">{{ Auth::user()->email }}</span>
             </div>
 
             <!-- Phone Number -->
             <div class="flex items-center justify-between px-4 py-4">
                 <span class="text-gray-700">Phone Number</span>
-                <span class="text-gray-500">+92-3159445761</span>
+                <span class="text-gray-500">{{ Auth::user()->phone }}</span>
             </div>
 
             <!-- Withdrawal Address -->
@@ -88,9 +88,14 @@
         </div>
 
         <!-- Logout Button -->
-        <div class="mt-10 bottom-0 left-0 right-0 bg-black text-white text-center py-4 cursor-pointer">
-            Log Out
-        </div>
+        <form id="logoutForm" action="{{ route('logout') }}" method="POST">
+            @csrf
+            <div onclick="document.getElementById('logoutForm').submit();"
+                class="mt-10 bottom-0 left-0 right-0 bg-black text-white text-center py-4 cursor-pointer">
+                Log Out
+            </div>
+        </form>
+
     </div>
 
 

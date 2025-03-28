@@ -15,6 +15,8 @@ use App\Livewire\Dashboard\Trade\TeamResult;
 use App\Livewire\Dashboard\Trade\TradeResult;
 use App\Livewire\Dashboard\Transactions;
 use App\Livewire\Dashboard\TransactionsList;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Validator;
@@ -50,3 +52,12 @@ Route::get('/register', RegisterComponent::class)->name('register');
 
 Route::post('/user-register', [AuthController::class, 'RegisterView']);
 Route::post('/user-login', [AuthController::class, 'LoginView']);
+Route::post('/otpsend', [AuthController::class, 'otpSend']);
+
+Route::post('/logout', function () {
+    Auth::logout();
+    request()->session()->invalidate();
+    request()->session()->regenerateToken();
+    return redirect('/login');
+})->name('logout');
+
