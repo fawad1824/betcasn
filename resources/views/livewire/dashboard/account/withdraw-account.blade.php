@@ -14,7 +14,7 @@
         <div class="text-xl font-bold flex space-x-2">
             <a class="flex  space-x-2" href="/record-recharge">
                 {{-- <img style="width: 25px;" src="https://www.betcasn.com/images/info.png" alt=""> --}}
-                <img style="width: 25px;" src="https://www.betcasn.com/images/icon_history.png" alt="">
+                <img style="width: 25px;" src="{{asset('assets/images/icon_history.webp')}}" alt="">
             </a>
         </div>
     </header>
@@ -27,7 +27,7 @@
             <div>
                 <label class="block text-gray-700 font-medium text-lg md:text-xl">Wallet Account</label>
                 <div class="flex items-center p-3 border rounded-lg bg-gray-100">
-                    <img src="https://cryptologos.cc/logos/tron-trx-logo.png" alt="TRX"
+                    <img src="{{asset('assets/images/tron-trx-logo.png')}}" alt="TRX"
                         class="w-6 h-6 md:w-8 md:h-8">
                     <span class="ml-2 text-gray-700 font-bold text-lg md:text-xl">TRX</span>
                 </div>

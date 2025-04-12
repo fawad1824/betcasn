@@ -13,7 +13,7 @@
         <div class="text-xl font-bold flex space-x-2">
             <a class="flex  space-x-2" href="/record-recharge">
                 {{-- <img style="width: 25px;" src="https://www.betcasn.com/images/info.png" alt=""> --}}
-                <img style="width: 25px;" src="https://www.betcasn.com/images/icon_history.png" alt="">
+                <img style="width: 25px;" src="{{ asset('assets/images/icon_history.webp') }}" alt="">
             </a>
         </div>
     </header>
@@ -29,14 +29,14 @@
                     <div class="flex flex-col">
                         <div class="flex items-center space-x-2 font-bold">
                             <span class="text-gray-600 w-10">From</span>
-                            <img src="https://cryptologos.cc/logos/tron-trx-logo.png?v=025" alt="TRX"
+                            <img src="{{ asset('assets/images/tron-trx-logo.png') }}" alt="TRX"
                                 class="h-6 w-6 md:h-8 md:w-8" />
                             <span class="font-bold">TRX</span>
                         </div>
                         <div class="ml-2 h-5 border-l-2 border-gray-300"></div>
                         <div class="flex items-center space-x-2 font-bold">
                             <span class="text-gray-600  w-10">To</span>
-                            <img src="https://cryptologos.cc/logos/tether-usdt-logo.png?v=025" alt="USDT"
+                            <img src="{{ asset('assets/images/tether-usdt-logo.png') }}" alt="USDT"
                                 class="h-6 w-6 md:h-8 md:w-8" />
                             <span class="font-bold">USDT</span>
                         </div>

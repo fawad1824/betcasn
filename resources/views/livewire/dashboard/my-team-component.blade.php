@@ -7,7 +7,9 @@
         next: 1,
         activeTabTeam: 'team',
         showModal: false,
-        countryCode: '+1'
+        countryCode: '+1',
+        textLink: 'https://www.betcrown.site/register?inviteCode=10134566',
+        textcode: '10134566'
     }">
 
         <header style="z-index: 100"
@@ -40,7 +42,7 @@
             <nav class="flex space-x-4 relative" x-data="{ showLangModal: false }">
                 <!-- Language Icon -->
                 <img @click="showLangModal = true" style="width: 25px; cursor: pointer;"
-                    src="https://www.betcasn.com/images/icon_lang.png" alt="">
+                    src="{{ asset('assets/images/icon_lang.webp') }}" alt="">
 
                 <!-- Language Modal -->
                 <div x-show="showLangModal" @click.away="showLangModal = false"
@@ -88,7 +90,9 @@
                             <div class="relative">
                                 <input type="text" value="https://www.betcrown.site/register?inviteCode=10134566"
                                     class="w-full p-3 border rounded-lg pr-10 text-sm sm:text-base">
-                                <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+                                <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+                                    @click="navigator.clipboard.writeText(textLink); $dispatch('notify', 'Copied!')"
+                                    title="Copy">
                                     <i class="fas fa-copy"></i>
                                 </button>
                             </div>
@@ -100,7 +104,9 @@
                             <div class="relative">
                                 <input type="text" value="10134566"
                                     class="w-full p-3 border rounded-lg pr-10 text-sm sm:text-base">
-                                <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+                                <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+                                    @click="navigator.clipboard.writeText(textcode); $dispatch('notify', 'Copied!')"
+                                    title="Copy">
                                     <i class="fas fa-copy"></i>
                                 </button>
                             </div>
@@ -113,7 +119,7 @@
                 <div class="relative h-[600px] flex items-center justify-center">
                     <!-- Background Image -->
 
-                    <img src="https://www.betcasn.com/images/finance/qrcode_bg.png" alt="Background Image"
+                    <img src="{{asset('assets/images/qrcode_bg.webp')}}" alt="Background Image"
                         class="absolute w-[700px] h-full rounded-lg">
 
                     <!-- QR Code -->
@@ -161,7 +167,7 @@
 
                             <div class="flex space-x-10 mt-4">
                                 <div class="flex items-center space-x-2">
-                                    <img src="https://cryptologos.cc/logos/tron-trx-logo.png" alt="TRX"
+                                    <img src="{{ asset('assets/images/tron-trx-logo.png') }}" alt="TRX"
                                         class="w-6 h-6">
                                     <div>
                                         <p class="text-sm">TRX</p>
@@ -170,7 +176,7 @@
                                     </div>
                                 </div>
                                 <div class="flex items-center space-x-2">
-                                    <img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="USDT"
+                                    <img src="{{ asset('assets/images/tether-usdt-logo.png') }}" alt="USDT"
                                         class="w-6 h-6">
                                     <div>
                                         <p class="text-sm">USDT</p>
@@ -295,10 +301,16 @@
 
         <script>
             new QRCode(document.getElementById("qrcode"), {
-                text: "https://yourwebsite.com",
+                text: "https://www.betcrown.site/register?inviteCode=10134566",
                 width: 200,
                 height: 200,
                 correctLevel: QRCode.CorrectLevel.H
             });
         </script>
+
+        <div x-data="{ show: false }" @notify.window="show = true; setTimeout(() => show = false, 2000)"
+            x-show="show" class="fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded shadow-lg"
+            x-transition>
+            Copied to clipboard!
+        </div>
     </div>

@@ -48,7 +48,7 @@
         <!-- Right: Language Selector -->
         <nav x-data="{ showLangModal: false }" class="relative">
             <img @click="showLangModal = !showLangModal" class="w-6 cursor-pointer"
-                src="https://www.betcasn.com/images/icon_lang.png" alt="Language">
+                src="{{asset('assets/images/icon_lang.webp')}}" alt="Language">
 
             <!-- Language Modal -->
             <div x-show="showLangModal" @click.away="showLangModal = false"

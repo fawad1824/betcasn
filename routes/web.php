@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Livewire\Auth\DashboardComponent;
+use App\Livewire\Auth\ForgetPassword;
 use App\Livewire\Auth\LoginComponent;
 use App\Livewire\Auth\RegisterComponent;
 use App\Livewire\Dashboard\Account\Exchange;
@@ -49,6 +50,8 @@ Route::middleware('auth')->group(function () {
 Route::get('/', LoginComponent::class)->name('login');
 Route::get('/register', RegisterComponent::class)->name('register');
 
+Route::get('/forget', ForgetPassword::class)->name('forget');
+
 
 Route::post('/user-register', [AuthController::class, 'RegisterView']);
 Route::post('/user-login', [AuthController::class, 'LoginView']);
@@ -60,4 +63,3 @@ Route::post('/logout', function () {
     request()->session()->regenerateToken();
     return redirect('/');
 })->name('logout');
-

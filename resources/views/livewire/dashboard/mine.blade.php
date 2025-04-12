@@ -3,10 +3,10 @@
     <div class="w-full mx-auto bg-white min-h-screen p-5">
         <!-- Profile Section -->
         <div class="mt-20 p-4 flex items-center space-x-4">
-            <img src="https://www.betcasn.com/images/avatar/1.png" class="w-12 h-12 rounded-full" alt="Profile">
+            <img src="{{ Auth::user()->image }}" class="w-12 h-12 rounded-full" alt="Profile">
             <div>
                 <p class="font-bold text-lg">UID: {{ Auth::user()->uuid }}</p>
-                <p class="text-gray-500 text-sm">{{ Auth::user()->email }} 🍻</p>
+                <p class="text-gray-500 text-sm">{{ Auth::user()->email }}</p>
             </div>
         </div>
 
@@ -22,7 +22,7 @@
 
             <div class="flex space-x-10 mt-4">
                 <div class="flex items-center space-x-2">
-                    <img src="https://cryptologos.cc/logos/tron-trx-logo.png" alt="TRX" class="mb-5 w-6 h-6">
+                    <img src="{{ asset('assets/images/tron-trx-logo.png') }}" alt="TRX" class="mb-5 w-6 h-6">
                     <div>
                         <p class="text-[20px]"><b>TRX</b></p>
                         <p class="text-lg font-bold">0</p>
@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="flex items-center space-x-2">
-                    <img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="USDT" class="mb-5 w-6 h-6">
+                    <img src="{{ asset('assets/images/tether-usdt-logo.png') }}" alt="USDT" class="mb-5 w-6 h-6">
                     <div>
                         <p class="text-[20px]"><b>USDT</b></p>
                         <p class="text-lg font-bold">0</p>
@@ -123,9 +123,11 @@
                     <span>Red Packet Password</span>
                 </li>
                 <li class="flex items-center space-x-4">
-                    <img class="h-6 w-6 sm:h-8 sm:w-8" src="https://www.betcasn.com/images/mine/exchange.png"
-                        alt="">
-                    <span>Exchange</span>
+                    <a href="/exchange" wire:navigate class="flex items-center space-x-4">
+                        <img class="h-6 w-6 sm:h-8 sm:w-8" src="https://www.betcasn.com/images/mine/exchange.png"
+                            alt="">
+                        <span>Exchange</span>
+                    </a>
                 </li>
                 <li>
                     <a href="/team" wire:navigate class="flex items-center space-x-4">
@@ -141,4 +143,5 @@
     </div>
 
     @include('livewire.dashboard.float-icon-component')
+    @include('livewire.dashboard.right-float-icon-component')
 </div>

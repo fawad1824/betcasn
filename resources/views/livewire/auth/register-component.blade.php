@@ -1,4 +1,7 @@
 <div>
+    @livewireScripts
+    @livewireStyles
+
     <header class="flex justify-between items-center border-b-2 border-gray-300 p-2 px-5">
         <!-- Left: Back/Close Icon -->
         <div class="text-xl font-bold">
@@ -7,17 +10,18 @@
                     <img wire:click="backSteps(1)" class="w-6" src="https://www.betcasn.com/images/icon_close.png"
                         alt="Icon">
                 @elseif ($steps == '2')
-                    <img wire:click="backSteps(1)" class="w-6"
-                        src="{{ asset('assets/images/backicon.png') }}" alt="Icon">
+                    <img wire:click="backSteps(1)" class="w-6" src="{{ asset('assets/images/backicon.png') }}"
+                        alt="Icon">
                 @elseif ($steps == '3')
-                    <img wire:click="backSteps(2)" class="w-6"
-                        src="{{ asset('assets/images/backicon.png') }}" alt="Icon">
+                    <img wire:click="backSteps(2)" class="w-6" src="{{ asset('assets/images/backicon.png') }}"
+                        alt="Icon">
                 @elseif ($steps == '4')
-                    <img wire:click="backSteps(3)" class="w-6"
-                        src="{{ asset('assets/images/backicon.png') }}" alt="Icon">
+                    <img wire:click="backSteps(3)" class="w-6" src="{{ asset('assets/images/backicon.png') }}"
+                        alt="Icon">
                 @endif
             </button>
         </div>
+
 
         <!-- Center: Toggle Buttons -->
         <div class="text-sm font-bold">
@@ -38,7 +42,7 @@
         <!-- Right: Language Selector -->
         <nav class="relative">
             <img wire:click="toggleLanguageModal" class="w-6 cursor-pointer"
-                src="https://www.betcasn.com/images/icon_lang.png" alt="Language">
+                src="{{asset('assets/images/icon_lang.webp')}}" alt="Language">
 
             @if ($showLangModal)
                 <div
@@ -97,8 +101,9 @@
 
                     <h1 class="text-sm mb-2"><span class="text-red-700">*</span> OTP</h1>
                     <div class="flex items-center space-x-2 border rounded">
-                        <input type="text" wire:model="otp" class="w-full p-2 border-none outline-none"
-                            placeholder="Enter OTP">
+                        <input type="text" wire:model="otp" name="otp"
+                            class="w-full p-2 border-none outline-none" placeholder="Enter OTP">
+
                         <button wire:click="otpSending" class="p-2 rounded text-black w-1/3 text-right">
                             Get Verification Code
                         </button>

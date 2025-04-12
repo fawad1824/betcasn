@@ -13,7 +13,7 @@
         <div class="text-xl font-bold flex space-x-2">
             <a class="flex  space-x-2" href="/record-recharge">
                 {{-- <img style="width: 25px;" src="https://www.betcasn.com/images/info.png" alt=""> --}}
-                {{-- <img style="width: 25px;" src="https://www.betcasn.com/images/icon_history.png" alt=""> --}}
+                {{-- <img style="width: 25px;" src="{{asset('assets/images/icon_history.webp')}}" alt=""> --}}
             </a>
         </div>
     </header>
@@ -64,7 +64,7 @@
 
                         <div class="flex space-x-10 mt-4">
                             <div class="flex items-center space-x-2">
-                                <img src="https://cryptologos.cc/logos/tron-trx-logo.png" alt="TRX"
+                                <img src="{{asset('assets/images/tron-trx-logo.png')}}" alt="TRX"
                                     class="mb-5 w-6 h-6">
                                 <div>
                                     <p class="text-[20px]"><b>TRX</b></p>
@@ -73,7 +73,7 @@
                                 </div>
                             </div>
                             <div class="flex items-center space-x-2">
-                                <img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="USDT"
+                                <img src="{{asset('assets/images/tron-trx-logo.png')}}" alt="USDT"
                                     class="mb-5 w-6 h-6">
                                 <div>
                                     <p class="text-[20px]"><b>USDT</b></p>
@@ -111,7 +111,7 @@
 
                         <div class="flex space-x-10 mt-4">
                             <div class="flex items-center space-x-2">
-                                <img src="https://cryptologos.cc/logos/tron-trx-logo.png" alt="TRX"
+                                <img src="{{asset('assets/images/tron-trx-logo.png')}}" alt="TRX"
                                     class="mb-5 w-6 h-6">
                                 <div>
                                     <p class="text-[20px]"><b>TRX</b></p>
@@ -120,7 +120,7 @@
                                 </div>
                             </div>
                             <div class="flex items-center space-x-2">
-                                <img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="USDT"
+                                <img src="{{asset('assets/images/tron-trx-logo.png')}}" alt="USDT"
                                     class="mb-5 w-6 h-6">
                                 <div>
                                     <p class="text-[20px]"><b>USDT</b></p>
@@ -156,7 +156,7 @@
 
                         <div class="flex space-x-10 mt-4">
                             <div class="flex items-center space-x-2">
-                                <img src="https://cryptologos.cc/logos/tron-trx-logo.png" alt="TRX"
+                                <img src="{{asset('assets/images/tron-trx-logo.png')}}" alt="TRX"
                                     class="mb-5 w-6 h-6">
                                 <div>
                                     <p class="text-[20px]"><b>TRX</b></p>
@@ -165,7 +165,7 @@
                                 </div>
                             </div>
                             <div class="flex items-center space-x-2">
-                                <img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="USDT"
+                                <img src="{{asset('assets/images/tron-trx-logo.png')}}" alt="USDT"
                                     class="mb-5 w-6 h-6">
                                 <div>
                                     <p class="text-[20px]"><b>USDT</b></p>
@@ -201,7 +201,7 @@
 
                         <div class="flex space-x-10 mt-4">
                             <div class="flex items-center space-x-2">
-                                <img src="https://cryptologos.cc/logos/tron-trx-logo.png" alt="TRX"
+                                <img src="{{asset('assets/images/tron-trx-logo.png')}}" alt="TRX"
                                     class="mb-5 w-6 h-6">
                                 <div>
                                     <p class="text-[20px]"><b>TRX</b></p>
@@ -210,7 +210,7 @@
                                 </div>
                             </div>
                             <div class="flex items-center space-x-2">
-                                <img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="USDT"
+                                <img src="{{asset('assets/images/tron-trx-logo.png')}}" alt="USDT"
                                     class="mb-5 w-6 h-6">
                                 <div>
                                     <p class="text-[20px]"><b>USDT</b></p>

@@ -53,7 +53,7 @@
             <div class="flex items-center space-x-2">
                 <img src="{{ asset('assets/images/80.png') }}" class="w-8 h-8 rounded-full" alt="Logo">
                 <div>
-                    <h2 class="font-bold text-sm">betcasn <span class="text-green-400">●</span></h2>
+                    <h2 class="font-bold text-sm">betcrown <span class="text-green-400">●</span></h2>
                     <p class="text-xs text-gray-400">Typically replies in a few minutes</p>
                 </div>
             </div>

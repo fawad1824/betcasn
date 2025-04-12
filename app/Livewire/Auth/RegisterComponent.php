@@ -3,6 +3,8 @@
 namespace App\Livewire\Auth;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
@@ -12,7 +14,7 @@ class RegisterComponent extends Component
     public $activeTab = 'email';
     public $showLangModal = false;
 
-    public $email = 'fawad1824@yopmail.com';
+    public $email;
     public $phone;
     public $otp;
     public $otpgenerate;
@@ -82,9 +84,16 @@ class RegisterComponent extends Component
         $this->validateOnly($this->activeTab === 'email' ? 'email' : 'phone');
 
         $this->validate([
-            'email' => 'required',
+            'email' => 'required|unique:users,email',
             'otp' => 'required',
         ]);
+
+        if ($this->activeTab == 'email') {
+            if ($this->otp != $this->otpgenerate) {
+                $this->dispatch('showToast', 'OTP Not Match');
+                return;
+            }
+        }
 
 
         $this->title = 'Register';
@@ -123,7 +132,6 @@ class RegisterComponent extends Component
     public function step5()
     {
 
-        dd($this->all());
         $this->validate([
             'whatsapp' => 'required|min:6',
             'code' => 'required',
@@ -133,20 +141,27 @@ class RegisterComponent extends Component
         $this->title1 = 'Other Options';
         $this->title2 = 'Set Withdrawal Password';
 
-        $user=new User();
-        $user->email = $this->email;
-        $user->phone = $this->phone;
-        $user->otp = $this->otp;
-        $user->lppassword = $this->lppassword;
-        $user->lcpassword = $this->lcpassword;
-        $user->wlpassword = $this->wlpassword;
-        $user->wcppassword = $this->wcppassword;
+        // dd($this->all());
+        $user = new User();
+        $user->uuid = rand(109999000, 999999999);
+        $user->email = $this->email ?? "";
+        $user->name =  "";
+        $user->phone = $this->phone ?? "";
+        $user->password = Hash::make($this->lppassword);
+        $user->lpassword = Hash::make($this->lppassword);
+        $user->cpassword = Hash::make($this->lcpassword);
+        $user->wlpassword = Hash::make($this->wlpassword);
+        $user->wcpassword = Hash::make($this->wcppassword);
         $user->whatsapp = $this->whatsapp;
-        $user->code = $this->code;
-        $user->language = $this->language;
-        $user->countryCode = $this->countryCode;
-
+        $user->countrycode = $this->countryCode;
+        $user->is_admin = "0";
+        $user->role = "2";
         $user->save();
+
+        if (Auth::attempt(['email' => $this->email, 'password' => $this->lppassword])) {
+            $this->dispatch('showToast', 'OTP Sent Successfully!', 'success');
+            return redirect()->route('home');
+        }
     }
 
     public function backSteps($step)
@@ -156,22 +171,31 @@ class RegisterComponent extends Component
 
     public function otpSending()
     {
-        $this->validate([
-            'email' => 'required|email',
-        ]);
+        if ($this->activeTab == 'phone') {
+            $this->validate([
+                'phone' => 'required',
+            ]);
 
-        $this->otpgenerate = rand(10000, 99999); // Generate 5-digit OTP
+            $this->otpgenerate = rand(10000, 99999);
+            $this->otp = $this->otpgenerate;
+        } elseif ($this->activeTab == 'email') {
+            $this->validate([
+                'email' => 'required|email',
+            ]);
 
-        $email = $this->email;
-        $otp = $this->otpgenerate;
-        $this->otp = $this->otpgenerate;
-        $msg = "{$otp} is the OTP for the verification of your email. OTPs are secret. Therefore do not disclose this to anyone.";
+            $this->otpgenerate = rand(10000, 99999); // Generate 5-digit OTP
 
-        // Send OTP via email
-        Mail::raw($msg, function ($message) use ($email) {
-            $message->to($email)
-                ->subject('Your OTP Code');
-        });
+            $email = $this->email;
+            $otp = $this->otpgenerate;
+            $this->otp = $this->otpgenerate;
+            $msg = "{$otp} is the OTP for the verification of your email. OTPs are secret. Therefore do not disclose this to anyone.";
+
+            // Send OTP via email
+            Mail::raw($msg, function ($message) use ($email) {
+                $message->to($email)
+                    ->subject('Your OTP Code');
+            });
+        }
 
         $this->dispatch('showToast', 'OTP Sent Successfully!', 'success');
     }

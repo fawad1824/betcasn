@@ -4,7 +4,7 @@
         <nav class="flex space-x-5 relative" x-data="{ showLangModal: false }">
             <!-- Language Icon -->
             <img @click="showLangModal = true" style="width: 25px; cursor: pointer;"
-                src="https://www.betcasn.com/images/icon_lang.png" alt="">
+                src="{{asset('assets/images/icon_lang.webp')}}" alt="">
 
             <!-- Language Modal -->
             <div style="--tw-space-x-reverse: initial;" x-show="showLangModal" @click.away="showLangModal = false"

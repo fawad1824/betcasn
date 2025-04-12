@@ -22,7 +22,7 @@
         <div class="text-xl font-bold flex space-x-2">
             <a class="flex  space-x-2" href="/transactions-list">
                 <img style="width: 25px;" src="https://www.betcasn.com/images/info.png" alt="">
-                <img style="width: 25px;" src="https://www.betcasn.com/images/icon_history.png" alt="">
+                <img style="width: 25px;" src="{{asset('assets/images/icon_history.webp')}}" alt="">
             </a>
         </div>
     </header>
@@ -183,8 +183,10 @@
             </div>
 
         </div>
+
     </div>
 
 
+    @include('livewire.dashboard.right-float-icon-component')
 
 </div>

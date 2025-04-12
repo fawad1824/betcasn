@@ -12,7 +12,7 @@
 
         <div class="text-xl font-bold flex space-x-2">
             {{-- <a class="flex  space-x-2" href="/withdrawals-list">
-                <img style="width: 25px;" src="https://www.betcasn.com/images/icon_history.png" alt="">
+                <img style="width: 25px;" src="{{asset('assets/images/icon_history.webp')}}" alt="">
             </a> --}}
         </div>
     </header>
